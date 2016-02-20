@@ -3,14 +3,14 @@
 ##############################################
 
 BUILD=x86-unknown-linux-gnu
-HOST=i686-w64-mingw32
-TARGET=i686-w64-mingw32
+HOST=x86_64-w64-mingw32
+TARGET=x86_64-w64-mingw32
 PREFIX=$HOME/.win/libusb
 
 
 NAME=libusb
 ARCH=windows
-VERSION=1
+VERSION=2
 PACKNAME=$NAME-$ARCH-$VERSION
 TARBALL=$PWD/dist/$PACKNAME.tar.gz
 
