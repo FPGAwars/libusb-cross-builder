@@ -21,7 +21,7 @@ WORK=$PWD
 mkdir -p dist; cd dist
 
 # Install dependencies
-sudo apt-get install mingw-w64
+sudo apt-get install mingw-w64 libtool autoconf
 
 # download libusb
 git -C libusb pull || git clone https://github.com/libusb/libusb.git
