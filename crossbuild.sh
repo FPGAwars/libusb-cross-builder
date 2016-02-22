@@ -10,9 +10,11 @@ PREFIX=$HOME/.win/libusb
 
 NAME=libusb
 ARCH=windows
-VERSION=2
+VERSION=3
 PACKNAME=$NAME-$ARCH-$VERSION
 TARBALL=$PWD/dist/$PACKNAME.tar.gz
+ZIPBALL=$PWD/dist/$PACKNAME.zip
+ZIPEXAMPLE=listdevs-example-$ARCH-$VERSION.zip
 
 # Store current dir
 WORK=$PWD
@@ -39,7 +41,19 @@ make
 # Install libusb
 make install
 
+# Cross-compile one example
+cd examples
+$HOST-gcc -o listdevs.exe listdevs.c -I $PREFIX/include/libusb-1.0 -L $PREFIX/lib -static -lusb-1.0
+
+# Zip the .exe file and move it to the main directory
+zip $ZIPEXAMPLE listdevs.exe
+mv $ZIPEXAMPLE $WORK
+
 # Create the tarball
 cd $PREFIX
 tar vzcf $TARBALL *
 mv $TARBALL $WORK
+
+# Create the zipball
+zip -r $ZIPBALL *
+mv $ZIPBALL $WORK
