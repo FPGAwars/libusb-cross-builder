@@ -108,7 +108,7 @@ cp $WORK/$BUILD_DATA/$ARCH/libudev.so.1 $PREFIX/lib
 cd examples
 arm-linux-gnueabihf-gcc -o listdevs listdevs.c -I $HOME/.armhf/include/libusb-1.0  -L $HOME/.armhf/lib $HOME/.armhf/lib/libusb-1.0.a -lpthread
 
-# Zip the .exe file and move it to the main directory
+# TAR the executable file and move it to the main directory
 tar vzcf $ZIPEXAMPLE listdevs
 mv $ZIPEXAMPLE $WORK/$PACK_DIR
 
@@ -116,7 +116,3 @@ mv $ZIPEXAMPLE $WORK/$PACK_DIR
 cd $PREFIX
 tar vzcf $TARBALL *
 mv $TARBALL $WORK/$PACK_DIR
-
-# Create the zipball
-zip -r $ZIPBALL *
-mv $ZIPBALL $WORK/$PACK_DIR
